@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CareerPilot</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f6f7fb;
+      color: #171717;
+    }
+
+    .app {
+      max-width: 480px;
+      margin: auto;
+      padding: 20px;
+      padding-bottom: 90px;
+    }
+
+    .header {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 28px;
+    }
+
+    .subtitle {
+      color: #777;
+      margin-top: 6px;
+    }
+
+    .hero {
+      background: #4f46e5;
+      color: white;
+      padding: 22px;
+      border-radius: 22px;
+      margin-bottom: 25px;
+    }
+
+    .hero h2 {
+      margin-bottom: 12px;
+    }
+
+    .progress {
+      height: 9px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 12px 0;
+    }
+
+    .progress span {
+      display: block;
+      width: 60%;
+      height: 100%;
+      background: white;
+    }
+
+    .section-title {
+      margin: 20px 0 12px;
+      font-size: 20px;
+    }
+
+    .task {
+      background: white;
+      padding: 16px;
+      border-radius: 15px;
+      margin-bottom: 10px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    }
+
+    .task span {
+      margin-right: 10px;
+    }
+
+    .card {
+      background: white;
+      padding: 18px;
+      border-radius: 18px;
+      margin-bottom: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    }
+
+    .bar {
+      height: 8px;
+      background: #e5e7eb;
+      border-radius: 20px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .bar span {
+      display: block;
+      height: 100%;
+      background: #4f46e5;
+    }
+
+    .nav {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      background: white;
+      display: flex;
+      justify-content: space-around;
+      padding: 15px 5px;
+      box-shadow: 0 -3px 15px rgba(0,0,0,0.08);
+    }
+
+    .nav div {
+      font-size: 12px;
+      text-align: center;
+      color: #666;
+    }
+
+    .nav strong {
+      display: block;
+      color: #4f46e5;
+      font-size: 20px;
+      margin-bottom: 3px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <div class="header">
+      <h1>👋 Welcome back!</h1>
+      <p class="subtitle">Siddhartha</p>
+    </div>
+
+    <div class="hero">
+      <h2>🔥 7 Day Streak</h2>
+
+      <p>Today's Progress</p>
+
+      <div class="progress">
+        <span></span>
+      </div>
+
+      <p>3 of 5 tasks completed</p>
+    </div>
+
+    <h2 class="section-title">🎯 Today's Tasks</h2>
+
+    <div class="task">
+      <span>✅</span>
+      Learn Arrays
+    </div>
+
+    <div class="task">
+      <span>⬜</span>
+      Solve 2 DSA Problems
+    </div>
+
+    <div class="task">
+      <span>⬜</span>
+      Work on Project
+    </div>
+
+    <h2 class="section-title">📊 Career Progress</h2>
+
+    <div class="card">
+      <b>🧠 DSA</b>
+      <div class="bar">
+        <span style="width:60%"></span>
+      </div>
+      <p>60%</p>
+    </div>
+
+    <div class="card">
+      <b>💻 Projects</b>
+      <div class="bar">
+        <span style="width:70%"></span>
+      </div>
+      <p>70%</p>
+    </div>
+
+    <div class="card">
+      <b>🚀 Skills</b>
+      <div class="bar">
+        <span style="width:50%"></span>
+      </div>
+      <p>50%</p>
+    </div>
+
+  </div>
+
+  <div class="nav">
+    <div>
+      <strong>🏠</strong>
+      Home
+    </div>
+
+    <div>
+      <strong>🎯</strong>
+      Goals
+    </div>
+
+    <div>
+      <strong>🧠</strong>
+      DSA
+    </div>
+
+    <div>
+      <strong>💻</strong>
+      Projects
+    </div>
+
+    <div>
+      <strong>👤</strong>
+      Profile
+    </div>
+  </div>
+
+</body>
+</html>
