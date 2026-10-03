@@ -1,231 +1,605 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CareerPilot</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<title>CareerPilot</title>
 
-    body {
-      background: #f6f7fb;
-      color: #171717;
-    }
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
 
-    .app {
-      max-width: 480px;
-      margin: auto;
-      padding: 20px;
-      padding-bottom: 90px;
-    }
+body{
+    background:#f5f7fb;
+    color:#171717;
+}
 
-    .header {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
+.app{
+    max-width:480px;
+    margin:auto;
+    padding:20px;
+    padding-bottom:100px;
+}
 
-    .header h1 {
-      font-size: 28px;
-    }
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:15px 0 20px;
+}
 
-    .subtitle {
-      color: #777;
-      margin-top: 6px;
-    }
+.header h1{
+    font-size:26px;
+}
 
-    .hero {
-      background: #4f46e5;
-      color: white;
-      padding: 22px;
-      border-radius: 22px;
-      margin-bottom: 25px;
-    }
+.subtitle{
+    color:#777;
+    margin-top:5px;
+}
 
-    .hero h2 {
-      margin-bottom: 12px;
-    }
+.profile{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    background:#4f46e5;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
 
-    .progress {
-      height: 9px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 20px;
-      overflow: hidden;
-      margin: 12px 0;
-    }
+.hero{
+    background:linear-gradient(135deg,#4f46e5,#7c3aed);
+    color:white;
+    padding:22px;
+    border-radius:24px;
+    margin-bottom:22px;
+    box-shadow:0 10px 25px rgba(79,70,229,.25);
+}
 
-    .progress span {
-      display: block;
-      width: 60%;
-      height: 100%;
-      background: white;
-    }
+.hero-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
-    .section-title {
-      margin: 20px 0 12px;
-      font-size: 20px;
-    }
+.hero h2{
+    margin-bottom:8px;
+}
 
-    .task {
-      background: white;
-      padding: 16px;
-      border-radius: 15px;
-      margin-bottom: 10px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-    }
+.streak{
+    font-size:28px;
+}
 
-    .task span {
-      margin-right: 10px;
-    }
+.progress{
+    height:10px;
+    background:rgba(255,255,255,.25);
+    border-radius:20px;
+    overflow:hidden;
+    margin:15px 0 8px;
+}
 
-    .card {
-      background: white;
-      padding: 18px;
-      border-radius: 18px;
-      margin-bottom: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-    }
+.progress span{
+    display:block;
+    height:100%;
+    width:60%;
+    background:white;
+    border-radius:20px;
+}
 
-    .bar {
-      height: 8px;
-      background: #e5e7eb;
-      border-radius: 20px;
-      margin-top: 10px;
-      overflow: hidden;
-    }
+.section-title{
+    font-size:20px;
+    margin:22px 0 12px;
+}
 
-    .bar span {
-      display: block;
-      height: 100%;
-      background: #4f46e5;
-    }
+.task{
+    background:white;
+    padding:15px;
+    border-radius:16px;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    box-shadow:0 4px 14px rgba(0,0,0,.05);
+}
 
-    .nav {
-      position: fixed;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 480px;
-      background: white;
-      display: flex;
-      justify-content: space-around;
-      padding: 15px 5px;
-      box-shadow: 0 -3px 15px rgba(0,0,0,0.08);
-    }
+.task input{
+    width:20px;
+    height:20px;
+}
 
-    .nav div {
-      font-size: 12px;
-      text-align: center;
-      color: #666;
-    }
+.task.completed{
+    opacity:.55;
+    text-decoration:line-through;
+}
 
-    .nav strong {
-      display: block;
-      color: #4f46e5;
-      font-size: 20px;
-      margin-bottom: 3px;
-    }
-  </style>
+.delete{
+    margin-left:auto;
+    border:0;
+    background:#fee2e2;
+    color:#dc2626;
+    padding:6px 9px;
+    border-radius:8px;
+}
+
+.add-box{
+    display:flex;
+    gap:8px;
+    margin-top:12px;
+}
+
+.add-box input{
+    flex:1;
+    padding:13px;
+    border:1px solid #ddd;
+    border-radius:12px;
+    outline:none;
+}
+
+.add-box button{
+    border:0;
+    background:#4f46e5;
+    color:white;
+    padding:0 16px;
+    border-radius:12px;
+    font-size:20px;
+}
+
+.card{
+    background:white;
+    padding:17px;
+    border-radius:18px;
+    margin-bottom:12px;
+    box-shadow:0 4px 14px rgba(0,0,0,.05);
+}
+
+.card-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+}
+
+.bar{
+    height:9px;
+    background:#e5e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.bar span{
+    display:block;
+    height:100%;
+    background:#4f46e5;
+    border-radius:20px;
+}
+
+.percent{
+    margin-top:7px;
+    color:#666;
+    font-size:14px;
+}
+
+.quick-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.quick{
+    background:white;
+    padding:18px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 4px 14px rgba(0,0,0,.05);
+}
+
+.quick-icon{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.nav{
+    position:fixed;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
+    max-width:480px;
+    background:white;
+    display:flex;
+    justify-content:space-around;
+    padding:11px 3px;
+    box-shadow:0 -4px 18px rgba(0,0,0,.08);
+    z-index:10;
+}
+
+.nav div{
+    font-size:11px;
+    text-align:center;
+    color:#777;
+}
+
+.nav strong{
+    display:block;
+    font-size:20px;
+    margin-bottom:3px;
+}
+
+.nav .active{
+    color:#4f46e5;
+}
+
+.empty{
+    text-align:center;
+    color:#888;
+    padding:15px;
+}
+</style>
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
 
+    <!-- HEADER -->
     <div class="header">
-      <h1>👋 Welcome back!</h1>
-      <p class="subtitle">Siddhartha</p>
+        <div>
+            <h1>👋 Welcome back!</h1>
+            <p class="subtitle">Siddhartha • Future Software Engineer</p>
+        </div>
+
+        <div class="profile">S</div>
     </div>
 
+    <!-- HERO -->
     <div class="hero">
-      <h2>🔥 7 Day Streak</h2>
 
-      <p>Today's Progress</p>
+        <div class="hero-top">
+            <div>
+                <h2>🔥 7 Day Streak</h2>
+                <p>Keep building your career!</p>
+            </div>
 
-      <div class="progress">
-        <span></span>
-      </div>
+            <div class="streak">🔥</div>
+        </div>
 
-      <p>3 of 5 tasks completed</p>
+        <div class="progress">
+            <span id="mainProgress"></span>
+        </div>
+
+        <p id="taskProgress">0 of 0 tasks completed</p>
+
     </div>
 
+    <!-- TASKS -->
     <h2 class="section-title">🎯 Today's Tasks</h2>
 
-    <div class="task">
-      <span>✅</span>
-      Learn Arrays
+    <div id="taskList"></div>
+
+    <div class="add-box">
+        <input
+            id="taskInput"
+            type="text"
+            placeholder="Add a new task..."
+        >
+
+        <button onclick="addTask()">+</button>
     </div>
 
-    <div class="task">
-      <span>⬜</span>
-      Solve 2 DSA Problems
-    </div>
 
-    <div class="task">
-      <span>⬜</span>
-      Work on Project
-    </div>
-
+    <!-- CAREER PROGRESS -->
     <h2 class="section-title">📊 Career Progress</h2>
 
     <div class="card">
-      <b>🧠 DSA</b>
-      <div class="bar">
-        <span style="width:60%"></span>
-      </div>
-      <p>60%</p>
+
+        <div class="card-header">
+            <b>🧠 DSA</b>
+            <b>60%</b>
+        </div>
+
+        <div class="bar">
+            <span style="width:60%"></span>
+        </div>
+
+        <p class="percent">Arrays → Strings → Linked List</p>
+
     </div>
+
 
     <div class="card">
-      <b>💻 Projects</b>
-      <div class="bar">
-        <span style="width:70%"></span>
-      </div>
-      <p>70%</p>
+
+        <div class="card-header">
+            <b>💻 Projects</b>
+            <b>70%</b>
+        </div>
+
+        <div class="bar">
+            <span style="width:70%"></span>
+        </div>
+
+        <p class="percent">3 projects in development</p>
+
     </div>
+
 
     <div class="card">
-      <b>🚀 Skills</b>
-      <div class="bar">
-        <span style="width:50%"></span>
-      </div>
-      <p>50%</p>
+
+        <div class="card-header">
+            <b>🚀 Skills</b>
+            <b>50%</b>
+        </div>
+
+        <div class="bar">
+            <span style="width:50%"></span>
+        </div>
+
+        <p class="percent">Programming • Web • Git • DSA</p>
+
     </div>
 
-  </div>
 
-  <div class="nav">
-    <div>
-      <strong>🏠</strong>
-      Home
+    <!-- QUICK ACTIONS -->
+    <h2 class="section-title">⚡ Quick Actions</h2>
+
+    <div class="quick-grid">
+
+        <div class="quick" onclick="showMessage('DSA section coming next!')">
+            <div class="quick-icon">🧠</div>
+            <b>Practice DSA</b>
+        </div>
+
+        <div class="quick" onclick="showMessage('Project tracker coming next!')">
+            <div class="quick-icon">💻</div>
+            <b>My Projects</b>
+        </div>
+
+        <div class="quick" onclick="showMessage('AI Career Assistant coming soon!')">
+            <div class="quick-icon">🤖</div>
+            <b>AI Assistant</b>
+        </div>
+
+        <div class="quick" onclick="showMessage('Resume Builder coming soon!')">
+            <div class="quick-icon">📄</div>
+            <b>Build Resume</b>
+        </div>
+
     </div>
 
-    <div>
-      <strong>🎯</strong>
-      Goals
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="nav">
+
+    <div class="active">
+        <strong>🏠</strong>
+        Home
     </div>
 
-    <div>
-      <strong>🧠</strong>
-      DSA
+    <div onclick="showMessage('Goals section coming next!')">
+        <strong>🎯</strong>
+        Goals
     </div>
 
-    <div>
-      <strong>💻</strong>
-      Projects
+    <div onclick="showMessage('DSA section coming next!')">
+        <strong>🧠</strong>
+        DSA
     </div>
 
-    <div>
-      <strong>👤</strong>
-      Profile
+    <div onclick="showMessage('Projects section coming next!')">
+        <strong>💻</strong>
+        Projects
     </div>
-  </div>
+
+    <div onclick="showMessage('Profile section coming next!')">
+        <strong>👤</strong>
+        Profile
+    </div>
+
+</div>
+
+
+<script>
+
+let tasks = JSON.parse(localStorage.getItem("careerPilotTasks")) || [
+
+    {
+        text:"Learn Arrays",
+        completed:true
+    },
+
+    {
+        text:"Solve 2 DSA Problems",
+        completed:false
+    },
+
+    {
+        text:"Work on Project",
+        completed:false
+    }
+
+];
+
+
+function saveTasks(){
+
+    localStorage.setItem(
+        "careerPilotTasks",
+        JSON.stringify(tasks)
+    );
+
+}
+
+
+function renderTasks(){
+
+    const list = document.getElementById("taskList");
+
+    list.innerHTML = "";
+
+    if(tasks.length === 0){
+
+        list.innerHTML =
+        '<div class="empty">No tasks yet. Add your first task 🚀</div>';
+
+    }
+
+    tasks.forEach((task,index)=>{
+
+        const div = document.createElement("div");
+
+        div.className =
+        "task " +
+        (task.completed ? "completed" : "");
+
+        div.innerHTML = `
+
+            <input
+                type="checkbox"
+                ${task.completed ? "checked" : ""}
+                onchange="toggleTask(${index})"
+            >
+
+            <span>${escapeHTML(task.text)}</span>
+
+            <button
+                class="delete"
+                onclick="deleteTask(${index})"
+            >
+                🗑
+            </button>
+
+        `;
+
+        list.appendChild(div);
+
+    });
+
+    updateProgress();
+
+}
+
+
+function addTask(){
+
+    const input =
+    document.getElementById("taskInput");
+
+    const text =
+    input.value.trim();
+
+    if(text === ""){
+
+        alert("Please enter a task.");
+
+        return;
+
+    }
+
+    tasks.push({
+
+        text:text,
+
+        completed:false
+
+    });
+
+    input.value = "";
+
+    saveTasks();
+
+    renderTasks();
+
+}
+
+
+function toggleTask(index){
+
+    tasks[index].completed =
+    !tasks[index].completed;
+
+    saveTasks();
+
+    renderTasks();
+
+}
+
+
+function deleteTask(index){
+
+    tasks.splice(index,1);
+
+    saveTasks();
+
+    renderTasks();
+
+}
+
+
+function updateProgress(){
+
+    const total = tasks.length;
+
+    const completed =
+    tasks.filter(task => task.completed).length;
+
+    const percentage =
+    total === 0
+    ? 0
+    : Math.round((completed / total) * 100);
+
+    document.getElementById("mainProgress")
+    .style.width = percentage + "%";
+
+    document.getElementById("taskProgress")
+    .innerText =
+    `${completed} of ${total} tasks completed`;
+
+}
+
+
+function escapeHTML(text){
+
+    const div =
+    document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+function showMessage(message){
+
+    alert(message);
+
+}
+
+
+document
+.getElementById("taskInput")
+.addEventListener("keypress",function(event){
+
+    if(event.key === "Enter"){
+
+        addTask();
+
+    }
+
+});
+
+
+renderTasks();
+
+</script>
 
 </body>
-</html>
+  </html>
